@@ -1,50 +1,8 @@
 import React, { useState } from 'react';
+import Header from './components/Header';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 import './App.css';
-
-const Header = (props) => <header>{props.children}</header>
-
-const TodoList = (props) => {
-  return (
-    <ul className="todo__list">
-      {props.todos.map((todo) => {
-        return (
-          <li key={todo.id} className={todo.isDone ? 'isDone' : ''}>
-            {todo.isDone ? `${todo.name} ✅` : todo.name}
-            <div>
-              <button 
-                className="btn done-btn"
-                onClick={() => props.toggleIsDone(todo)}
-              >
-                {todo.isDone ? 'Undo' : 'Done'}
-              </button> 
-              <button 
-                className="btn delete-btn"
-                onClick={() => props.deleteTodo(todo.id)}
-              >
-                Delete
-              </button>
-            </div>
-          </li> 
-        )
-      })}
-  </ul>
-  )
-}
-
-const TodoForm = (props) => {
-  return (
-    <form className="todo-form" onSubmit={props.onSubmit}>
-      <input 
-        className="todo__input" 
-        type="text" 
-        value={props.value} 
-        placeholder="Add your new todo" 
-        onChange={props.onChange}
-      />
-      <button type="submit" className="add-btn btn">Add</button>
-    </form>
-  )
-}
 
 const App = () => {
   const [todoInput, setTodoInput] = useState('');
