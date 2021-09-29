@@ -9,7 +9,7 @@ const TodoList = (props) => {
       {props.todos.map((todo) => {
         return (
           <li key={todo.id} className={todo.isDone ? 'isDone' : ''}>
-            {todo.name}
+            {todo.isDone ? `${todo.name} ✅` : todo.name}
             <div>
               <button 
                 className="btn done-btn"

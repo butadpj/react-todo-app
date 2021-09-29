@@ -12,6 +12,9 @@ header {
   flex-flow: column;
 }
 
+.isDone {
+  text-decoration: line-through;
+}
 /* CLASS UTILITIES START */
 .btn {
   border: none;
