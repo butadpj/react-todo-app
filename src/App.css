@@ -1,38 +1,85 @@
-.App {
-  text-align: center;
+header {
+  font-size: 2em;
+  color: var(--light);
+  font-weight: 800;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  flex-flow: column;
+}
+
+/* CLASS UTILITIES START */
+.btn {
+  border: none;
+  padding: 1em 1.5em;
+  color: black;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(120%);
+}
+
+.done-btn {
+  background: var(--primary);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.delete-btn {
+  background: var(--danger);
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.add-btn {
+  background: var(--success);
+  color: white;
+}
+/* CLASS UTILITIES END */
+
+
+.todo-form {
+  width: 80%;
+  max-width: 25rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.todo__input {
+  width: 100%;
+  padding-left: 1em;
+  border: none;
+}
+
+.todo__input:focus {
+  outline: none;
+  border:1px solid var(--dark);
+}
+
+.todo__list {
+  margin-top: 5em;
+  width: 80%;
+  max-width: 30rem;
+  list-style: none;
+}
+
+.todo__list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--light);
+  font-size: 1.5em;
+  padding: 1em;
+}
+
+.todo__list li:hover {
+  background: var(--primary);
+}
+
+.todo__list li:hover .done-btn{
+  background: var(--light);
+  color: black;
 }
