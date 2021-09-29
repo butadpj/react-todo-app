@@ -8,14 +8,14 @@ const TodoList = (props) => {
     <ul className="todo__list">
       {props.todos.map((todo) => {
         return (
-          <li key={todo.id}>
+          <li key={todo.id} className={todo.isDone ? 'isDone' : ''}>
             {todo.name}
             <div>
               <button 
                 className="btn done-btn"
                 onClick={() => props.toggleIsDone(todo)}
               >
-                Done
+                {todo.isDone ? 'Undo' : 'Done'}
               </button> 
               <button 
                 className="btn delete-btn"
@@ -70,6 +70,22 @@ const App = () => {
     }
   }
 
+  const handleToggleIsDone = (selectedTodo) => {
+    let finishedTodo;
+    if (!selectedTodo.isDone) finishedTodo = {...selectedTodo, isDone: true}
+    else finishedTodo = {...selectedTodo, isDone: false}
+
+    setTodos(todos.map((todo) => 
+      // Only return the updated todo (finishedTodo) 
+      // and just copy the rest
+      todo.id === finishedTodo.id ? finishedTodo : todo
+    ));
+  }
+
+  const handleDeleteTodo = (selectedTodoId) => {
+    setTodos(todos.filter((todo) => selectedTodoId !== todo.id))
+  }
+
   return (
     <div className="app">
       <Header>Todo App</Header>
@@ -79,7 +95,11 @@ const App = () => {
         onChange={handleInputChange}
         onSubmit={handleInputSubmit}
       />
-      <TodoList />
+      <TodoList 
+        todos={todos} 
+        toggleIsDone={handleToggleIsDone}
+        deleteTodo={handleDeleteTodo}
+      />
     </div>
   );
 }
