@@ -14,7 +14,7 @@ const TodoList = (props) => {
       )
     )
   }
-  
+
   return (
     <ul className="todo__list">
       {props.todos.map((todo) => {
@@ -38,6 +38,9 @@ const TodoList = (props) => {
           </li> 
         )
       })}
+      {props.todos.length || (
+        <p>You don't have any todos</p>
+      )}
   </ul>
   )
 }
