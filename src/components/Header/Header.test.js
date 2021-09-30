@@ -1,7 +1,14 @@
-import React from 'react';
 import Header from "./index";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 
-it("renders without crashing", () => {
-  shallow(<Header />);
+
+describe("<Header />", () => {
+  it("renders without crashing", () => {
+    shallow(<Header />);
+  });
+
+  it('renders children when passed in', () => {
+    const wrapper = shallow((<Header>Todo App</Header>));
+    expect(wrapper.contains('Todo App')).toBe(true);
+  });
 });
