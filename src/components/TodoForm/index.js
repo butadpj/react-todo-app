@@ -4,6 +4,7 @@ const TodoForm = (props) => {
   return (
     <form className="todo-form" onSubmit={props.onSubmit}>
       <input 
+        autoFocus
         className="todo__input" 
         type="text" 
         value={props.value} 
