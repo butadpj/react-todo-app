@@ -39,7 +39,7 @@ const TodoList = (props) => {
         )
       })}
       {props.todos.length || (
-        <p>You don't have any todos</p>
+        <p style={{textAlign: "center"}}>Seems quiet here... Add your first todo.</p>
       )}
   </ul>
   )
