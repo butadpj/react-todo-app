@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Header from './components/Header';
-import TodoForm from './components/TodoForm';
-import TodoList from './components/TodoList';
+import { Header, TodoForm, TodoList } from './components';
 import './App.css';
 
 const App = () => {
@@ -48,15 +46,15 @@ const App = () => {
     <div className="app">
       <Header>Todo App</Header>
       <br />
-      <TodoForm 
-        value={todoInput} 
-        onChange={handleInputChange}
-        onSubmit={handleInputSubmit}
-      />
       <TodoList 
         todos={todos} 
         toggleIsDone={handleToggleIsDone}
         deleteTodo={handleDeleteTodo}
+      />
+      <TodoForm 
+        value={todoInput} 
+        onChange={handleInputChange}
+        onSubmit={handleInputSubmit}
       />
     </div>
   );
