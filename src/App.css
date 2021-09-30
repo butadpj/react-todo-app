@@ -72,6 +72,9 @@ header {
   list-style: none;
   overflow: auto;
   padding-bottom: 4rem;
+  color: var(--light);
+  font-size: 1.5em;
+  padding: 1em;
 }
 
 .todo__list li {
@@ -79,9 +82,6 @@ header {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  color: var(--light);
-  font-size: 1.5em;
-  padding: 1em;
 }
 
 .todo__list li:hover {
