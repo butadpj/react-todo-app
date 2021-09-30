@@ -3,6 +3,7 @@
   --secondary: rgb(80, 62, 163);
   --dark: rgb(24, 23, 23);
   --light: rgb(238, 238, 238);
+  --light-1: rgba(238, 238, 238, 0.226);
   --success: rgb(38, 151, 43);
   --danger: rgb(175, 43, 43);
 }
