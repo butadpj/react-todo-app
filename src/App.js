@@ -16,12 +16,12 @@ const App = () => {
     if (todoInput) {
       setTodoInput('');    
       setTodos([
+        ...todos, // Copy of previous object in array
         {
           id: new Date().valueOf(), 
           name: todoInput,
           isDone: false,
         }, 
-        ...todos // Copy of previous object in array
       ]);
     }
   }
