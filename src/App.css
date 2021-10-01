@@ -10,9 +10,10 @@ header {
   position: fixed;
   top: 10%;
   font-size: 2em;
-  color: var(--light-1);
+  color: var(--light);
   font-weight: 800;
   z-index: -1;
+  animation: fadeOut 1s ease-out 2.5s forwards;
 }
 
 /* CLASS UTILITIES START */
@@ -21,25 +22,27 @@ header {
   padding: 1em 1.5em;
   color: black;
   cursor: pointer;
+  transition: 0.35s ease-out;
 }
 
 .btn:hover {
   filter: brightness(120%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.246);
 }
 
-.done-btn {
+.btn--primary {
   background: var(--primary);
-  color: white;
+  color: var(--light);
 }
 
-.delete-btn {
+.btn--danger {
   background: var(--danger);
-  color: white;
+  color: var(--light);
 }
 
-.add-btn {
+.btn--success {
   background: var(--success);
-  color: white;
+  color: var(--light);
 }
 
 .isDone {
@@ -47,8 +50,10 @@ header {
 }
 /* CLASS UTILITIES END */
 
+
+/* TODO FORM START */
 .todo-form {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   max-width: 40rem;
@@ -57,6 +62,7 @@ header {
 
 .todo__input {
   width: 100%;
+  font-size: 1.2rem;
   padding-left: 1em;
   border: none;
 }
@@ -65,6 +71,11 @@ header {
   outline: none;
   border:1px solid var(--dark);
 }
+
+.add-btn {
+  font-size: 1.2rem;
+}
+/* TODO FORM START */
 
 .todo__list {
   width: 100%;
@@ -82,19 +93,36 @@ header {
   justify-content: center;
   align-items: center;
   padding: 1em;
+  border-bottom: 1px solid var(--primary);
 }
 
 .todo__list li:hover {
   background: var(--primary);
 }
 
-.todo__list li:hover .done-btn{
-  background: var(--light);
-  color: black;
-}
-
 .todo__buttons {
   margin-top: 1rem;
+}
+
+.delete-btn {
+  background: transparent;
+  color: white;
+}
+
+/* BUTTONS HOVER */
+.todo__list li:hover .done-btn{
+  background: var(--success);
+  color: var(--light);
+}
+
+.todo__list li:hover .undo-btn{
+  background: var(--light);
+  color: var(--dark);
+}
+
+.todo__list li:hover .delete-btn{
+  background: var(--danger);
+  color: var(--light);
 }
 
 @media only screen and (min-width: 40rem) {
@@ -106,5 +134,15 @@ header {
   .todo__buttons {
     display: flex;
     margin: 0 0 0 1rem;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

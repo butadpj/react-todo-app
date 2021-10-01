@@ -11,7 +11,7 @@ const TodoForm = (props) => {
         placeholder="Add your new todo" 
         onChange={props.onChange}
       />
-      <button type="submit" className="add-btn btn">Add</button>
+      <button type="submit" className="btn btn--success add-btn">Add</button>
     </form>
   )
 }

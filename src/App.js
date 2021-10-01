@@ -45,7 +45,6 @@ const App = () => {
   return (
     <div className="app">
       <Header>Todo App</Header>
-      <br />
       <TodoList 
         todos={todos} 
         toggleIsDone={handleToggleIsDone}
