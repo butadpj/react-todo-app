@@ -22,7 +22,6 @@ header {
   padding: 1em 1.5em;
   color: black;
   cursor: pointer;
-  border-radius: 5px;
   transition: 0.35s ease-out;
 }
 
@@ -70,12 +69,11 @@ header {
 
 .todo__input:focus {
   outline: none;
-  border:1px solid var(--dark);
+  border: 1px solid var(--dark);
 }
 
 .add-btn {
   font-size: 1.2rem;
-  border-radius: none;
 }
 /* TODO FORM START */
 
