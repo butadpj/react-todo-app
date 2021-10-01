@@ -23,7 +23,11 @@ const TodoList = (props) => {
             {todoNameBasedOnState(todo)}
             <div className="todo__buttons">
               <button 
-                className="btn done-btn"
+                className={`btn btn--primary 
+                ${todo.isDone ? 
+                  'undo-btn' : 
+                  'done-btn'}
+                `}
                 onClick={() => props.toggleIsDone(todo)}
               >
                 {todo.isDone ? 'Undo' : 'Done'}
@@ -39,7 +43,9 @@ const TodoList = (props) => {
         )
       })}
       {!props.todos.length && (
-        <p style={{textAlign: "center"}}>Seems quiet here... Add your first todo.</p>
+        <p style={{textAlign: "center", padding: '0 1.5rem'}}>
+          Seems quiet here... Add your first todo.
+        </p>
       )}
   </ul>
   )
