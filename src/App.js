@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllTodos } from './app/modules/todos/todos.selectors';
+import { addTodo, deleteTodo, toggleIsDoneState } from './app/modules/todos/todos.actions';
+
 import { Header, TodoForm, TodoList } from './components';
 import './App.css';
 
 const App = () => {
-  const [todoInput, setTodoInput] = useState('');
-  const [todos, setTodos] = useState([]);
-
+  const [todoInputName, setTodoInputName] = useState('');
+  
+  const todos = useSelector(getAllTodos);
+  const dispatch = useDispatch();
+  
   const handleInputChange = (event) => {
-    setTodoInput(event.target.value);
+    setTodoInputName(event.target.value);
   }
 
   const handleInputSubmit = (event) => {
     event.preventDefault();
 
-    if (todoInput) {
-      setTodoInput('');    
-      setTodos([
-        ...todos, // Copy of previous object in array
-        {
-          id: new Date().valueOf(), 
-          name: todoInput,
-          isDone: false,
-        }, 
-      ]);
+    if (todoInputName) {
+      setTodoInputName('');  
+      dispatch(addTodo(todoInputName))
     }
   }
 
@@ -31,15 +30,11 @@ const App = () => {
     if (!selectedTodo.isDone) finishedTodo = {...selectedTodo, isDone: true}
     else finishedTodo = {...selectedTodo, isDone: false}
 
-    setTodos(todos.map((todo) => 
-      // Only return the updated todo (finishedTodo) 
-      // and just copy the rest
-      todo.id === finishedTodo.id ? finishedTodo : todo
-    ));
+    dispatch(toggleIsDoneState(finishedTodo))
   }
 
   const handleDeleteTodo = (selectedTodoId) => {
-    setTodos(todos.filter((todo) => selectedTodoId !== todo.id))
+    dispatch(deleteTodo(selectedTodoId));
   }
 
   return (
@@ -51,7 +46,7 @@ const App = () => {
         deleteTodo={handleDeleteTodo}
       />
       <TodoForm 
-        value={todoInput} 
+        value={todoInputName} 
         onChange={handleInputChange}
         onSubmit={handleInputSubmit}
       />
