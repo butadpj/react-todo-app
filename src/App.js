@@ -26,11 +26,8 @@ const App = () => {
   }
 
   const handleToggleIsDone = (selectedTodo) => {
-    let finishedTodo;
-    if (!selectedTodo.isDone) finishedTodo = {...selectedTodo, isDone: true}
-    else finishedTodo = {...selectedTodo, isDone: false}
-
-    dispatch(toggleIsDoneState(finishedTodo))
+    let updatedTodo = {...selectedTodo, isDone: !selectedTodo.isDone}
+    dispatch(toggleIsDoneState(updatedTodo));
   }
 
   const handleDeleteTodo = (selectedTodoId) => {
