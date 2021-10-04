@@ -27,14 +27,11 @@ const App = () => {
   }
 
   const handleToggleIsDone = (selectedTodo) => {
-    let finishedTodo;
-    if (!selectedTodo.isDone) finishedTodo = {...selectedTodo, isDone: true}
-    else finishedTodo = {...selectedTodo, isDone: false}
-
+    let updatedTodo = {...selectedTodo, isDone: !selectedTodo.isDone};
     setTodos(todos.map((todo) => 
       // Only return the updated todo (finishedTodo) 
       // and just copy the rest
-      todo.id === finishedTodo.id ? finishedTodo : todo
+      todo.id === updatedTodo.id ? updatedTodo : todo
     ));
   }
 
