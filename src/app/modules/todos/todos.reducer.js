@@ -24,8 +24,7 @@ export const todosReducer = createSlice({
     toggleIsDoneState: (state, action) => {
       const finishedTodo = action.payload;
       state.list = state.list.map((todo) => 
-      // Only return the updated todo (finishedTodo) 
-      // and just copy the rest
+      // Update the todo that matches finishedTodo's id
       todo.id === finishedTodo.id ? finishedTodo : todo
     )
     }
