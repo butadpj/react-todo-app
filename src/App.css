@@ -50,6 +50,15 @@ header {
   color: var(--light);
 }
 
+.btn--disabled {
+  cursor: not-allowed;
+  filter: brightness(50%);
+}
+
+.btn--disabled:hover {
+  filter: brightness(50%);
+}
+
 .completed {
   text-decoration: line-through;
 }
@@ -108,14 +117,28 @@ header {
 /* TODO NAV START */
 .todo-nav {
   position: fixed;
-  left: 0;
+  left: -1000px;
+  transform: translateX(-50%);
   bottom: 67px;
   width: 100%;
   max-width: 40rem;
+  transition: left 0.3s ease-out;
+}
+
+.todo-nav--show {
+  left: 50%;
 }
 
 .nav__icon {
+  position: fixed;
+  top: 50%;
+  right: 2vw;
   align-self: flex-end;
+  cursor: pointer;
+}
+
+.nav__icon:hover {
+  filter: brightness(125%);
 }
 
 .nav__buttons {
@@ -168,7 +191,7 @@ header {
   }
 
   .nav__buttons > * {
-    flex-basis: auto;
+    flex: 1 0 auto;
   }
 }
 
