@@ -1,15 +1,22 @@
 import React from 'react';
 import { TodoForm, TodoList, TodoNav } from './components';
+import ErrorBoundary from './components/errors/ErrorBoundary';
 import './App.css';
 
 const App = () => {
-  const Header = React.lazy(() => import('./components'))
+  const Header = React.lazy(() => import('./components/Header'))
 
   return (
     <div className="app">
-      <Header>Todo App</Header>
+      <React.Suspense fallback={<h2>Loading Header...</h2>}>
+        <Header>Todo App</Header>
+      </React.Suspense>
       <TodoList />
-      <TodoNav />
+      <React.Suspense fallback={<h2>Loading Nav...</h2>}>
+        <ErrorBoundary>
+          <TodoNav />
+        </ErrorBoundary>
+      </React.Suspense>
       <TodoForm />
     </div>
   );
