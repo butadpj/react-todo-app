@@ -13,7 +13,7 @@ const App = () => {
       </React.Suspense>
       <TodoList />
       <React.Suspense fallback={<h2>Loading Nav...</h2>}>
-        <ErrorBoundary>
+        <ErrorBoundary componentName="Nav">
           <TodoNav />
         </ErrorBoundary>
       </React.Suspense>
