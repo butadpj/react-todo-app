@@ -18,7 +18,7 @@ const isArrayEmpty = (array) => {
 }
 
 const TodoNav = () => {
-  const todos = useSelector(getAllTodos());
+  const todos = useSelector(getAllTodos);
 
   const [showNav, setShowNav] = React.useState(false);
   const [checkAll, setCheckAll] = React.useState(false);
