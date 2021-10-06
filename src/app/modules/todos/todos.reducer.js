@@ -29,10 +29,13 @@ export const todosReducer = createSlice({
       todo.id === updatedTodo.id ? updatedTodo : todo
     )
     },
-    checkAllTodos: (state, action) => {
+    checkAllToggle: (state, action) => {
       state.list = state.list.map(todo => {
-        return {...todo, completed: true}
+        return {...todo, completed: action.payload}
       });
+    },
+    deleteAllTodos: (state, action) => {
+      state.list = [];
     }
   }
 })
