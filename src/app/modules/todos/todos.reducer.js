@@ -13,7 +13,7 @@ export const todosReducer = createSlice({
         {
           id: new Date().valueOf(), 
           name: inputTodoName,
-          isDone: false,
+          completed: false,
         }, 
       ]
     },
@@ -21,12 +21,18 @@ export const todosReducer = createSlice({
       const todoId = action.payload;
       state.list = state.list.filter((todo) => todoId !== todo.id)
     },
-    toggleIsDoneState: (state, action) => {
-      const finishedTodo = action.payload;
+    toggleCompleted: (state, action) => {
+      const selectedTodo = action.payload;
+      const updatedTodo = {...selectedTodo, completed: !selectedTodo.completed}
       state.list = state.list.map((todo) => 
-      // Update the todo that matches finishedTodo's id
-      todo.id === finishedTodo.id ? finishedTodo : todo
+      // Update the todo that matches updatedTodo's id
+      todo.id === updatedTodo.id ? updatedTodo : todo
     )
+    },
+    checkAllTodos: (state, action) => {
+      state.list = state.list.map(todo => {
+        return {...todo, completed: true}
+      });
     }
   }
 })

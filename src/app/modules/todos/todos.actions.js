@@ -1,3 +1,8 @@
 import { todosReducer } from "./todos.reducer";
 
-export const { addTodo, deleteTodo, toggleIsDoneState } = todosReducer.actions;
+export const { 
+      addTodo, 
+      checkAllTodos, 
+      deleteTodo, 
+      toggleCompleted 
+    } = todosReducer.actions;
