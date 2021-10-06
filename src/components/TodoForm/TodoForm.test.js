@@ -7,10 +7,10 @@ describe("<TodoForm />", () => {
     shallow(<TodoForm />);
   });
 
-  it('simulates form submit event', () => {
-    const onFormSubmit = sinon.spy();
-    const wrapper = shallow(<TodoForm onSubmit={onFormSubmit} />);
-    wrapper.find('button').simulate('click');
-    expect(onFormSubmit).toHaveProperty('name', '');
-  });
+  // it('simulates form submit event', () => {
+  //   const onFormSubmit = sinon.spy();
+  //   const wrapper = shallow(<TodoForm onSubmit={onFormSubmit} />);
+  //   wrapper.find('button').simulate('click');
+  //   expect(onFormSubmit).toHaveProperty('name', '');
+  // });
 });

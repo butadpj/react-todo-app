@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../app/modules/todos/todos.actions';
 
-const TodoForm = (props) => {
+const TodoForm = () => {
+  const [todoInputName, setTodoInputName] = useState('');
+  const dispatch = useDispatch();
+
+  const handleInputChange = (event) => {
+    setTodoInputName(event.target.value);
+  }
+
+  const handleInputSubmit = (event) => {
+    event.preventDefault();
+
+    if (todoInputName) {
+      setTodoInputName('');  
+      dispatch(addTodo(todoInputName))
+    }
+  }
+
   return (
-    <form className="todo-form" onSubmit={props.onSubmit}>
+    <form className="todo-form" onSubmit={handleInputSubmit}>
       <input 
         autoFocus
-        className="todo__input" 
+        className="form__input" 
         type="text" 
-        value={props.value} 
+        value={todoInputName} 
         placeholder="Add your new todo" 
-        onChange={props.onChange}
+        onChange={handleInputChange}
       />
       <button type="submit" className="btn btn--success add-btn">Add</button>
     </form>

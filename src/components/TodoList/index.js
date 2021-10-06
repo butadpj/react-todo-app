@@ -1,10 +1,24 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllTodos } from '../../app/modules/todos/todos.selectors';
+import { deleteTodo, toggleCompleted } from '../../app/modules/todos/todos.actions';
 
-const TodoList = (props) => {
+const TodoList = () => {
+  const todos = useSelector(getAllTodos);
+  const dispatch = useDispatch();
+
+  const handleDeleteTodo = (selectedTodoId) => {
+    dispatch(deleteTodo(selectedTodoId));
+  }
+
+  const handleToggleCompleted = (selectedTodo) => {
+    dispatch(toggleCompleted(selectedTodo));
+  }
+
   const todoNameBasedOnState = (todo) => {
     return (
-      todo.isDone ? (
-        <p className="isDone">
+      todo.completed ? (
+        <p className="completed">
           {`${todo.name} ✅`}
         </p>
       ) : (
@@ -16,25 +30,25 @@ const TodoList = (props) => {
   }
 
   return (
-    <ul className="todo__list">
-      {props.todos.map((todo) => {
+    <ul className="todo-list">
+      {todos.map((todo) => {
         return (
           <li key={todo.id}>
             {todoNameBasedOnState(todo)}
             <div className="todo__buttons">
               <button 
                 className={`btn btn--primary 
-                ${todo.isDone ? 
+                ${todo.completed ? 
                   'undo-btn' : 
                   'done-btn'}
                 `}
-                onClick={() => props.toggleIsDone(todo)}
+                onClick={() => handleToggleCompleted(todo)}
               >
-                {todo.isDone ? 'Undo' : 'Done'}
+                {todo.completed ? 'Undo' : 'Done'}
               </button> 
               <button 
                 className="btn delete-btn"
-                onClick={() => props.deleteTodo(todo.id)}
+                onClick={() => handleDeleteTodo(todo.id)}
               >
                 Delete
               </button>
@@ -42,7 +56,7 @@ const TodoList = (props) => {
           </li> 
         )
       })}
-      {!props.todos.length && (
+      {!todos.length && (
         <p style={{textAlign: "center", padding: '0 1.5rem'}}>
           Seems quiet here... Add your first todo.
         </p>
