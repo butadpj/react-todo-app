@@ -1,18 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTodos } from '../../app/modules/todos/todos.selectors';
-import { deleteTodo, toggleCompleted } from '../../app/modules/todos/todos.actions';
+import { todoActions } from '../../app/modules/todos/todos.actions';
 
 const TodoList = () => {
   const todos = useSelector(getAllTodos);
+  
   const dispatch = useDispatch();
 
   const handleDeleteTodo = (selectedTodoId) => {
-    dispatch(deleteTodo(selectedTodoId));
+    dispatch(todoActions.deleteTodo(selectedTodoId));
   }
 
   const handleToggleCompleted = (selectedTodo) => {
-    dispatch(toggleCompleted(selectedTodo));
+    dispatch(todoActions.toggleCompleted(selectedTodo));
   }
 
   const todoNameBasedOnState = (todo) => {

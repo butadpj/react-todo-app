@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../../app/modules/todos/todos.actions';
+import { todoActions } from '../../app/modules/todos/todos.actions';
 
 const TodoForm = () => {
   const [todoInputName, setTodoInputName] = useState('');
@@ -15,7 +15,7 @@ const TodoForm = () => {
 
     if (todoInputName) {
       setTodoInputName('');  
-      dispatch(addTodo(todoInputName))
+      dispatch(todoActions.addTodo(todoInputName))
     }
   }
 
