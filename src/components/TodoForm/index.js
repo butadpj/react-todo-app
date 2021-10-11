@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux';
 import { todoActions } from '../../app/modules/todos/todos.actions';
 
 const TodoForm = () => {
-  const [todoInputName, setTodoInputName] = useState('');
   const dispatch = useDispatch();
 
+  const [todoInputName, setTodoInputName] = useState('');
+  
   const handleInputChange = (event) => {
     setTodoInputName(event.target.value);
   }
