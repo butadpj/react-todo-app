@@ -1,17 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTodos } from '../../app/modules/todos/todos.selectors';
 import { todoActions } from '../../app/modules/todos/todos.actions';
-
-const getIcon = (icon) => {
-  const iconBaseUrl = 'https://img.icons8.com/nolan/32/';
-  const suffix = '.png';
-  return `${iconBaseUrl}${icon}${suffix}`
-}
+import NavIcon from './NavIcon';
 
 const allItemsAreChecked = (array) => 
   array.every(item => item.completed)
-
 
 const isArrayEmpty = (array) => {
   return array.length ? false : true
@@ -20,10 +14,10 @@ const isArrayEmpty = (array) => {
 const TodoNav = () => {
   const todos = useSelector(getAllTodos);
 
+  const dispatch = useDispatch();
+
   const [showNav, setShowNav] = React.useState(false);
   const [checkAll, setCheckAll] = React.useState(false);
-  
-  const dispatch = useDispatch();
 
   const handleCheckAllToggle = () => {
     if (isArrayEmpty(todos)) return;
@@ -56,30 +50,25 @@ const TodoNav = () => {
   }, [dispatch, todos])
 
   return (
-    <>
-      <img 
-        onClick={handleToggleNav}
-        className="nav__icon"
-        alt="nav-icon" 
-        src={`${showNav ? getIcon('double-right') : getIcon('double-left')}`}
+    <div className={`todo-nav ${showNav ? 'todo-nav--show' : ''}`}>
+      <NavIcon
+        showNav={showNav}
+        handleClick={handleToggleNav}
       />
-      <div className={`todo-nav ${showNav ? 'todo-nav--show' : ''}`}>
-        <div className="nav__buttons">
-
-          <button 
-            onClick={handleCheckAllToggle} 
-            className={`btn ${checkAll ? 'btn--primary' : 'btn--success'}
-            ${isArrayEmpty(todos) ? 'btn--disabled' : ''}`}>
-              {checkAll ? 'Uncheck all' : 'Check all'}
-          </button>
-          <button 
-            onClick={handleDeleteAllTodos} 
-            className={`btn btn--danger ${isArrayEmpty(todos) ? 'btn--disabled' : ''}`}>
-              Delete all todos
-          </button>
-        </div>  
-      </div>
-    </>
+      <div className="nav__buttons">
+        <button 
+          onClick={handleCheckAllToggle} 
+          className={`btn ${checkAll ? 'btn--primary' : 'btn--success'}
+          ${isArrayEmpty(todos) ? 'btn--disabled' : ''}`}>
+            {checkAll ? 'Uncheck all' : 'Check all'}
+        </button>
+        <button 
+          onClick={handleDeleteAllTodos} 
+          className={`btn btn--danger ${isArrayEmpty(todos) ? 'btn--disabled' : ''}`}>
+            Delete all todos
+        </button>
+      </div>  
+    </div>
   )
 }
 
