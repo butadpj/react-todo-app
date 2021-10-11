@@ -1,5 +1,5 @@
 import Header from "./index";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 
 
 describe("<Header />", () => {
