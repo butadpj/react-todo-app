@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoItem /> UI doesn't change unexpectedly 1`] = `
+<TodoItem
+  todo={
+    Object {
+      "id": 1,
+      "isDone": false,
+      "name": "Sample Todo",
+    }
+  }
+>
+  <li>
+    <p>
+      Sample Todo
+    </p>
+    <div
+      className="todo__buttons"
+    >
+      <button
+        className="btn btn--primary toggle-btn done-btn"
+        onClick={[Function]}
+      >
+        Done
+      </button>
+      <button
+        className="btn delete-btn"
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+    </div>
+  </li>
+</TodoItem>
+`;

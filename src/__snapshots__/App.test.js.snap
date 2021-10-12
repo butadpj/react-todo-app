@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> UI doesn't change unexpectedly 1`] = `
+<App>
+  <div
+    className="app"
+  >
+    <Header>
+      <header>
+        Todo App
+      </header>
+    </Header>
+    <TodoList
+      deleteTodo={[Function]}
+      todos={Array []}
+      toggleIsDone={[Function]}
+    >
+      <ul
+        className="todo__list"
+      >
+        <EmptyTodoMessage>
+          <p
+            className="empty-todo-message"
+            style={
+              Object {
+                "padding": "0 1.5rem",
+                "textAlign": "center",
+              }
+            }
+          >
+            Seems quiet here... Add your first todo.
+          </p>
+        </EmptyTodoMessage>
+      </ul>
+    </TodoList>
+    <TodoForm
+      onChange={[Function]}
+      onSubmit={[Function]}
+      value=""
+    >
+      <form
+        className="todo-form"
+        onSubmit={[Function]}
+      >
+        <input
+          autoFocus={true}
+          className="todo__input"
+          onChange={[Function]}
+          placeholder="Add your new todo"
+          type="text"
+          value=""
+        />
+        <button
+          className="btn btn--success add-btn"
+          type="submit"
+        >
+          Add
+        </button>
+      </form>
+    </TodoForm>
+  </div>
+</App>
+`;

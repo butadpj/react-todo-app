@@ -1,0 +1,224 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoList /> UI doesn't change unexpectedly 1`] = `
+<TodoList
+  todos={
+    Array [
+      Object {
+        "id": 1,
+        "isDone": false,
+        "name": "hey",
+      },
+      Object {
+        "id": 2,
+        "isDone": false,
+        "name": "jude",
+      },
+      Object {
+        "id": 3,
+        "isDone": false,
+        "name": "dont",
+      },
+      Object {
+        "id": 4,
+        "isDone": false,
+        "name": "make",
+      },
+      Object {
+        "id": 5,
+        "isDone": true,
+        "name": "it bad",
+      },
+    ]
+  }
+>
+  <ul
+    className="todo__list"
+  >
+    <TodoItem
+      key="1"
+      todo={
+        Object {
+          "id": 1,
+          "isDone": false,
+          "name": "hey",
+        }
+      }
+    >
+      <li>
+        <p>
+          hey
+        </p>
+        <div
+          className="todo__buttons"
+        >
+          <button
+            className="btn btn--primary toggle-btn done-btn"
+            onClick={[Function]}
+          >
+            Done
+          </button>
+          <button
+            className="btn delete-btn"
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </TodoItem>
+    <TodoItem
+      key="2"
+      todo={
+        Object {
+          "id": 2,
+          "isDone": false,
+          "name": "jude",
+        }
+      }
+    >
+      <li>
+        <p>
+          jude
+        </p>
+        <div
+          className="todo__buttons"
+        >
+          <button
+            className="btn btn--primary toggle-btn done-btn"
+            onClick={[Function]}
+          >
+            Done
+          </button>
+          <button
+            className="btn delete-btn"
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </TodoItem>
+    <TodoItem
+      key="3"
+      todo={
+        Object {
+          "id": 3,
+          "isDone": false,
+          "name": "dont",
+        }
+      }
+    >
+      <li>
+        <p>
+          dont
+        </p>
+        <div
+          className="todo__buttons"
+        >
+          <button
+            className="btn btn--primary toggle-btn done-btn"
+            onClick={[Function]}
+          >
+            Done
+          </button>
+          <button
+            className="btn delete-btn"
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </TodoItem>
+    <TodoItem
+      key="4"
+      todo={
+        Object {
+          "id": 4,
+          "isDone": false,
+          "name": "make",
+        }
+      }
+    >
+      <li>
+        <p>
+          make
+        </p>
+        <div
+          className="todo__buttons"
+        >
+          <button
+            className="btn btn--primary toggle-btn done-btn"
+            onClick={[Function]}
+          >
+            Done
+          </button>
+          <button
+            className="btn delete-btn"
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </TodoItem>
+    <TodoItem
+      key="5"
+      todo={
+        Object {
+          "id": 5,
+          "isDone": true,
+          "name": "it bad",
+        }
+      }
+    >
+      <li>
+        <p
+          className="isDone"
+        >
+          it bad ✅
+        </p>
+        <div
+          className="todo__buttons"
+        >
+          <button
+            className="btn btn--primary toggle-btn undo-btn"
+            onClick={[Function]}
+          >
+            Undo
+          </button>
+          <button
+            className="btn delete-btn"
+            onClick={[Function]}
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </TodoItem>
+  </ul>
+</TodoList>
+`;
+
+exports[`<TodoList /> UI doesn't change unexpectedly 2`] = `
+<TodoList>
+  <ul
+    className="todo__list"
+  >
+    <EmptyTodoMessage>
+      <p
+        className="empty-todo-message"
+        style={
+          Object {
+            "padding": "0 1.5rem",
+            "textAlign": "center",
+          }
+        }
+      >
+        Seems quiet here... Add your first todo.
+      </p>
+    </EmptyTodoMessage>
+  </ul>
+</TodoList>
+`;

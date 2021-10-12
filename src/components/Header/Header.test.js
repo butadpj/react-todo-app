@@ -1,10 +1,16 @@
 import Header from "./index";
 import { shallow, mount } from "enzyme";
+import toJson from "enzyme-to-json";
 
 
 describe("<Header />", () => {
   it("renders without crashing", () => {
     shallow(<Header />);
+  });
+
+  it("UI doesn't change unexpectedly", () => {
+    const wrapper = mount(<Header />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders children when passed in', () => {

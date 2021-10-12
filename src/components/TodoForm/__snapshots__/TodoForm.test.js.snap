@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TodoForm /> UI doesn't change unexpectedly 1`] = `
+<form
+  className="todo-form"
+>
+  <input
+    autoFocus={true}
+    className="todo__input"
+    placeholder="Add your new todo"
+    type="text"
+  />
+  <button
+    className="btn btn--success add-btn"
+    type="submit"
+  >
+    Add
+  </button>
+</form>
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> UI doesn't change unexpectedly 1`] = `
+<Header>
+  <header />
+</Header>
+`;
