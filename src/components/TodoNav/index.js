@@ -2,14 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTodos } from '../../app/modules/todos/todos.selectors';
 import { todoActions } from '../../app/modules/todos/todos.actions';
+import { allItemsAre, isArrayEmpty } from '../../utils';
+
 import NavIcon from './NavIcon';
-
-const allItemsAreChecked = (array) => 
-  array.every(item => item.completed)
-
-const isArrayEmpty = (array) => {
-  return array.length ? false : true
-}
 
 const TodoNav = () => {
   const todos = useSelector(getAllTodos);
@@ -45,7 +40,7 @@ const TodoNav = () => {
   }
 
   React.useEffect(() => {
-    allItemsAreChecked(todos) ? 
+    allItemsAre(todos, 'completed') ? 
       setCheckAll(true) : setCheckAll(false)
   }, [dispatch, todos])
 
