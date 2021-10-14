@@ -1,19 +1,18 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllTodos } from '../../app/modules/todos/todos.selectors';
-import { todoActions } from '../../app/modules/todos/todos.actions';
 import NavIcon from './NavIcon';
+import { actions } from '../../store/actions';
 
-const allItemsAreChecked = (array) => 
-  array.every(item => item.completed)
+const { checkAllToggle, deleteAllTodos } = actions;
+
+const allItemsAreChecked = (array) => array.every((item) => item.completed);
 
 const isArrayEmpty = (array) => {
-  return array.length ? false : true
-}
+  return array.length ? false : true;
+};
 
 const TodoNav = () => {
-  const todos = useSelector(getAllTodos);
-
+  const todos = useSelector((state) => state.todoReducer.todos);
   const dispatch = useDispatch();
 
   const [showNav, setShowNav] = React.useState(false);
@@ -21,55 +20,51 @@ const TodoNav = () => {
 
   const handleCheckAllToggle = () => {
     if (isArrayEmpty(todos)) return;
-
-    // If all items are checked -> Make them uncheckable
+    // If all items are checked
     if (checkAll) {
-      setCheckAll(false);
-      dispatch(todoActions.checkAllToggle(false));
+      setCheckAll(false); // Make all uncheckable
+      dispatch(checkAllToggle(false));
     } else {
       setCheckAll(true);
-      dispatch(todoActions.checkAllToggle(true));
+      dispatch(checkAllToggle(true));
     }
-    
-  }
+  };
 
   const handleToggleNav = () => {
-    setShowNav(prev => !prev);
-  }
+    setShowNav((prev) => !prev);
+  };
 
   const handleDeleteAllTodos = () => {
     if (isArrayEmpty(todos)) return;
-
-    if (window.confirm('Are you sure?'))
-      dispatch(todoActions.deleteAllTodos());
-  }
+    if (window.confirm('Are you sure?')) dispatch(deleteAllTodos());
+  };
 
   React.useEffect(() => {
-    allItemsAreChecked(todos) ? 
-      setCheckAll(true) : setCheckAll(false)
-  }, [dispatch, todos])
+    allItemsAreChecked(todos) ? setCheckAll(true) : setCheckAll(false);
+  }, [dispatch, todos]);
 
   return (
     <div className={`todo-nav ${showNav ? 'todo-nav--show' : ''}`}>
-      <NavIcon
-        showNav={showNav}
-        handleClick={handleToggleNav}
-      />
-      <div className="nav__buttons">
-        <button 
-          onClick={handleCheckAllToggle} 
+      <NavIcon showNav={showNav} handleClick={handleToggleNav} />
+      <div className='nav__buttons'>
+        <button
+          onClick={handleCheckAllToggle}
           className={`btn ${checkAll ? 'btn--primary' : 'btn--success'}
-          ${isArrayEmpty(todos) ? 'btn--disabled' : ''}`}>
-            {checkAll ? 'Uncheck all' : 'Check all'}
+          ${isArrayEmpty(todos) ? 'btn--disabled' : ''}`}
+        >
+          {checkAll ? 'Uncheck all' : 'Check all'}
         </button>
-        <button 
-          onClick={handleDeleteAllTodos} 
-          className={`btn btn--danger ${isArrayEmpty(todos) ? 'btn--disabled' : ''}`}>
-            Delete all todos
+        <button
+          onClick={handleDeleteAllTodos}
+          className={`btn btn--danger ${
+            isArrayEmpty(todos) ? 'btn--disabled' : ''
+          }`}
+        >
+          Delete all todos
         </button>
-      </div>  
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default TodoNav
+export default TodoNav;

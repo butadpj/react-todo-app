@@ -1,21 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllTodos } from '../../app/modules/todos/todos.selectors';
-import { todoActions } from '../../app/modules/todos/todos.actions';
+import { connect } from 'react-redux';
+import { actions } from '../../store/actions';
 
-const TodoList = () => {
-  const todos = useSelector(getAllTodos);
+const { toggleCompleted, deleteTodo } = actions;
 
-  const dispatch = useDispatch();
-
-  const handleDeleteTodo = (selectedTodoId) => {
-    dispatch(todoActions.deleteTodo(selectedTodoId));
-  };
-
-  const handleToggleCompleted = (selectedTodo) => {
-    dispatch(todoActions.toggleCompleted(selectedTodo));
-  };
-
+const TodoList = ({ todos, toggleCompleted, deleteTodo }) => {
   const todoNameBasedOnState = (todo) => {
     return todo.completed ? (
       <p className='completed'>{`${todo.name} ✅`}</p>
@@ -35,13 +24,13 @@ const TodoList = () => {
                 className={`btn btn--primary 
                 ${todo.completed ? 'undo-btn' : 'done-btn'}
                 `}
-                onClick={() => handleToggleCompleted(todo)}
+                onClick={() => toggleCompleted(todo)}
               >
                 {todo.completed ? 'Undo' : 'Done'}
               </button>
               <button
                 className='btn delete-btn'
-                onClick={() => handleDeleteTodo(todo.id)}
+                onClick={() => deleteTodo(todo.id)}
               >
                 Delete
               </button>
@@ -58,4 +47,17 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default connect(
+  (state) => {
+    return {
+      todos: state.todoReducer.todos,
+    };
+  },
+  (dispatch) => {
+    return {
+      toggleCompleted: (selectedTodo) =>
+        dispatch(toggleCompleted(selectedTodo)),
+      deleteTodo: (selectedTodoId) => dispatch(deleteTodo(selectedTodoId)),
+    };
+  },
+)(TodoList);
