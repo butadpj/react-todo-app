@@ -1,7 +1,8 @@
+import navLeft from '../icons/nav-icon-left.png';
+import navRight from '../icons/nav-icon-right.png';
+
 const getIcon = (icon) => {
-  const iconBaseUrl = 'https://img.icons8.com/nolan/32/';
-  const suffix = '.png';
-  return `${iconBaseUrl}${icon}${suffix}`;
+  return icon.toLowerCase() === 'left' ? navLeft : navRight
 } 
 
 export default getIcon

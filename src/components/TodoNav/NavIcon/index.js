@@ -8,7 +8,7 @@ const NavIcon = (props) => {
       onClick={props.handleClick}
       className="nav__icon"
       alt="nav-icon" 
-      src={`${props.showNav ? getIcon('double-right') : getIcon('double-left')}`}
+      src={`${props.showNav ? getIcon('right') : getIcon('left')}`}
     />,
     document.getElementById('root')
   )
